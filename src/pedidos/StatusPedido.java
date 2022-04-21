@@ -18,7 +18,7 @@ ATENDIDO("Atendido");
 	}
 
 	StatusPedido() {
-	// TODO Auto-generated constructor stub
+	
 	}
 	
 	
