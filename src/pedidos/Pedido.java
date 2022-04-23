@@ -1,20 +1,19 @@
 package pedidos;
-import java.util.List;
 import java.util.ArrayList;
 
 public class Pedido {
 	
 	private String numero;
 	private String data;
-	private double valor;
+	private double valor = 0;
 	StatusPedido situacao;
 	Cliente cliente;
+	private ArrayList<Item> listaItem = new ArrayList<Item>();
 
-	public Pedido(String numero, String data, double valor, Cliente cliente, StatusPedido situacao) {
+	public Pedido(String numero, String data, Cliente cliente, StatusPedido situacao) {
 		
 		this.numero = numero;
 		this.data = data;
-		this.valor = valor;
 		this.cliente = cliente;	
 		this.situacao = situacao;
 	}
@@ -39,10 +38,6 @@ public class Pedido {
 		return valor;
 		}
 	
-	public void setValor(double valor) {
-		this.valor = valor; 
-	}
-	
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -50,19 +45,18 @@ public class Pedido {
 	public void setCliente(Cliente cliente) {
 		this.cliente  = cliente; 
 	}
-	
-	public List<Item> getListaItem() {
-		ArrayList<Item> items = new ArrayList<Item>();
-		items.add(null);
-		return items;
-		}
-	
+
 	public void adicionaListaItem(Item item){
-		
-		
+		this.listaItem.add(item);
+		this.valor += item.produto.getPreco() * item.getQtd();		
 	}
 	
-	
+	public void visualizarItens() {
+		this.listaItem.forEach(item -> {
+			System.out.println(item);
+		});
+	}
+		
 	@Override
 	public String toString() {
 		

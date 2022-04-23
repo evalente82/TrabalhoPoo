@@ -3,16 +3,16 @@ package pedidos;
 public class Item {
 	
 	private int sequencial;
-	private double qtd;
-	Pedido pedido;
+	private int qtd;	
 	Produto produto;
 
-	public Item(int sequencial, double qtd, Pedido pedido, Produto produto ) {
+	public Item(int sequencial, int qtd, Produto produto ) {
 		
 		this.sequencial = sequencial;
 		this.qtd = qtd;
+		this.produto = produto;
 	}
-	
+
 	public int getSequencial() {
 		return sequencial;
 		}
@@ -21,20 +21,12 @@ public class Item {
 		this.sequencial = sequencial; 
 	}
 	
-	public double getQtd() {
+	public int getQtd() {
 		return qtd;
 		}
 	
-	public void setQtd(double qtd) {
+	public void setQtd(int qtd) {
 		this.qtd = qtd; 
-	}
-	
-	public Pedido getPedido() {
-		return  pedido;
-	}
-	
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
 	}
 	
 	public Produto getProduto() {
@@ -45,12 +37,10 @@ public class Item {
 		this.produto = produto;
 	}
 	
-	
 	@Override
 	public String toString() {
 		
-		return "Sequencial: "+ this.sequencial + ", Quantidade: " + this.qtd +
-				", Pedido: " + this.pedido + ", Produto: " + this.produto;
+		return "Sequencial: "+ this.sequencial + ", Quantidade: " + this.qtd + ", Produto: " + this.produto;
 	}
 
 }

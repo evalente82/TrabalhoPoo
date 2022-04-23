@@ -1,7 +1,5 @@
 package pedidos;
 
-
-
 public class ClientEspecial extends Cliente {	
 	
 	private String area;
@@ -17,8 +15,7 @@ public class ClientEspecial extends Cliente {
 	public void setArea(String area) {
 		this.area = area; 
 	}
-	
-	
+		
 	@Override
 	public String toString() {
 		

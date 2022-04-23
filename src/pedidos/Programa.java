@@ -1,14 +1,10 @@
 package pedidos;
 
-import java.io.ObjectInputFilter.Status;
-import java.util.Iterator;
 import java.util.Locale;
 import java.util.Scanner;
-import pedidos.Cliente;
 
 
 public class Programa {
-
 
 	public static void main(String[] args) {
 		
@@ -17,13 +13,14 @@ public class Programa {
 		System.out.print("Insira 2 clientes ! \n");
 		int n = 2;
 		int z = 3;
-		Cliente cliente = new Cliente("10008648719","endrigo");
-		Cliente[] clientes = new Cliente[n];//instaciando um vetor do tipo clientes e o seu tamanho = 2
+		int i = 0;
+		
+		Cliente[] vetClientes = new Cliente[n];
 		Produto[] produtos = new Produto[z];
 		Pedido[] pedidos = new Pedido[n];
 		
-		
-		for (int i=0; i<clientes.length; i++) {
+		//cliente
+		for (i=0; i<vetClientes.length; i++) {
 			sc.nextLine();
 			System.out.print(" Insira o nome do cliente \n");
 			String nome = sc.nextLine();
@@ -31,19 +28,19 @@ public class Programa {
 			String CPF = sc.nextLine();
 			System.out.print(" Insira o endereço do cliente \n");
 			String endereco = sc.nextLine();			
-			clientes[i] = new Cliente(CPF, nome, endereco);//
+			vetClientes[i] = new Cliente(CPF, nome, endereco);//
 			
-			}//ele joga para o indice do vetor o nome o CPF e o endereço
+			}
 		
-		for(int i =0; i<clientes.length; i++) {
+		for( i =0; i<vetClientes.length; i++) {
 			System.out.print(" Cliente: ");
 			
-			System.out.print(clientes[i] + "\n ");
+			System.out.print(vetClientes[i] + "\n ");
 		}
-		
-		
+				
+		//produto
 		System.out.print("Insira 3 Produtos! \n");
-		for (int i=0; i<produtos.length; i++) {
+		for ( i=0; i<produtos.length; i++) {
 			sc.nextLine();
 			
 			System.out.print(" Insira o Código do produto \n");
@@ -69,17 +66,16 @@ public class Programa {
 			
 			}//ele joga para o indice do vetor o nome o CPF e o endereço
 		
-		for(int i =0; i<produtos.length; i++) {
+		for( i =0; i<produtos.length; i++) {
 			System.out.print(" Produto: ");
 			
 			System.out.print(produtos[i] + "\n ");
 		}
 		System.out.print(" \n");
-		
-		
-		
+				
+		//pedido
 		System.out.print("Insira 2 Pedidos! \n");
-		for (int i=0; i<pedidos.length; i++) {
+		for ( i=0; i<pedidos.length; i++) {
 			sc.nextLine();
 			
 			System.out.print(" Insira o Número do pedido \n");
@@ -90,35 +86,36 @@ public class Programa {
 			System.out.print(" Insira a data do pedido \n");
 			String data = sc.nextLine();
 			
-			System.out.print(" \n");
-			
-			System.out.print(" Insira o valor do pedido \n");
-			double valor = sc.nextDouble();
+			System.out.print(" \n");			
 			
 			System.out.print(" \n");
 			
-			//System.out.print(" Insira o cliente  \n");
-			cliente.setNome(clientes[0].getNome());
-			
-			//cliente.setNome(clientes[i].getNome());
-			
-			//System.out.print(" Insira a situação \n");
+			Cliente cliente = vetClientes[i];
 			StatusPedido situacao = StatusPedido.ANALISE;
 			
-			//String numero, String data, double valor, Cliente cliente, StatusPedido situacao)
-			pedidos[i] = new Pedido(numero, data, valor, cliente, situacao);//
+			pedidos[i] = new Pedido(numero, data, cliente, situacao);
 			System.out.print(" \n\n");
 			
-			}//ele joga para o indice do vetor o nome o CPF e o endereço
+			}		
 		
-		for(int i =0; i<pedidos.length; i++) {
+		pedidos[0].adicionaListaItem(new Item(1,3, produtos[0]));// adicionando intens no pedido -- sequencial, qtd do produto x
+		pedidos[0].adicionaListaItem(new Item(2,2, produtos[1]));
+		pedidos[0].situacao = StatusPedido.APROVADO;// muda para o estado de aprovado
+		
+		pedidos[1].adicionaListaItem(new Item(1,1, produtos[1]));
+		pedidos[1].adicionaListaItem(new Item(2,3, produtos[2]));
+		pedidos[1].situacao = StatusPedido.ATENDIDO;
+		
+		for( i =0; i<pedidos.length; i++) { //exibe os pedidos
 			System.out.print(" Pedido: ");
 			
 			System.out.print(pedidos[i] + "\n ");
 		}
+		System.out.println();
+		pedidos[0].visualizarItens();// imprime os itens de cada pedido
+		pedidos[1].visualizarItens();
+		
 		sc.close();
-		
-		
 	}
 
 }

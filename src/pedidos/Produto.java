@@ -41,14 +41,6 @@ public class Produto {
 		this.preco = preco; 
 	}
 	
-	//public double getQtdEstoque() {
-		//return qtdEstoque;
-		//}
-	
-	//public void setQtdEstoque(double qtdEstoque) {
-		//this.qtdEstoque = qtdEstoque; 
-	//}
-	
 	public int getQtdEstoq() {
 		return qtdEstoq;
 		}
@@ -65,13 +57,10 @@ public class Produto {
 		this.qtdEstoq -= qtdEstoq;
 		}
 	
-	
 	@Override
 	public String toString() {
 		
 		return "Código: "+ this.codigo + ", Nome: " + this.nome +
 				", Preço: " + this.preco + ", qtdEstoque: " + this.qtdEstoq;
 	}
-	
-
 }
